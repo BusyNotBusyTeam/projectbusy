@@ -113,11 +113,11 @@
 
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr id="buttonRow">
                         <td>
                           1
                         </td>
-                        <td>
+                        <td id="place">
                           Dakota Rice
                         </td>
                         <td>
@@ -429,6 +429,21 @@
 <script src="assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/demo/demo.js"></script>
+<script>
+    //Selects first row of buttons
+    $('#buttonRow').click(function(){
+    var bVal = $("#buttonRow #place").text()
+
+    var mapVal = $("#address").attr("value");
+
+    window.location = "./maps.html"
+    
+    mapVal.text(bVal)
+    alert(bVal)
+    // alert("Yee")
+  })
+
+</script>
 <script>
   $(document).ready(function() {
     $().ready(function() {
