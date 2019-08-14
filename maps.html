@@ -164,6 +164,10 @@ function geocodeAddress(geocoder, resultsMap) {
      type: ['gym']
    }; 
 
+map = new google.maps.Map(document.getElementById('map'), {
+     center: results[0].geometry.location,
+     zoom: 14
+   });
    // pyrmont = results[0].geometry.location;
 
 
