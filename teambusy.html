@@ -28,31 +28,31 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item ">
-          <a class="nav-link" href="./index.html">
+          <a id="B1" class="nav-link" href="./index.html">
             <i class="material-icons">home</i>
             <p>Home</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="./nearbyme.html">
+          <a id="B2" class="nav-link" href="./nearbyme.html">
             <i class="material-icons">content_paste</i>
             <p>Nearby Me</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="./maps.html">
+          <a id="B3" class="nav-link" href="./maps.html">
             <i class="material-icons">location_ons</i>
             <p>Maps</p>
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="./teambusy.html">
+          <a id="B4" class="nav-link" href="./teambusy.html">
             <i class="material-icons">group</i>
             <p>TeamBusy</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="./settings.html">
+          <a id="B5" class="nav-link" href="./settings.html">
             <i class="material-icons">settings</i>
             <p>Settings</p>
           </a>
@@ -96,7 +96,7 @@
                       <div class="card-body">
                         <h4 class="card-title" style=" margin-bottom: 10px;">Jacob Hanna</h4>
                         <p><b>
-                          My name is Jacob Hanna and I am 18 years old. I moved to the United States from Syria 2 years ago in order to pursue a better education. My ideal career path is to become a software developer. I enjoy spending time with my family and going to the gym in my free time.</b>
+                          As a member of TeamBusy, I learned a lot from working on this group project! Google APIs are not easy to work with. One of the many challenges the team faced was getting the APIs to work. I think we did an awesome job and we all became a better developers by working together as a team.</b>
                         </p>
                         <a href="https://github.com/j55hanna55" style="background: linear-gradient(60deg, #ab47bc, #247fc7);" class="btn btn-round">Follow</a>
                       </div>
@@ -112,7 +112,7 @@
                       <div class="card-body">
                         <h4 class="card-title" style=" margin-bottom: 10px;">Arashi Walker</h4>
                         <p><b>
-                         Google APIs is a beautiful thing. I learned alot from working on this group project! In the beginning we tried to take on maybe a little more then we could handle but with some patients, a lot of google document reading and some help from Pavan, Kit, Joshua and Simon i think we did an awesome job.</b>
+                         Google APIs is a beautiful thing. I learned alot from working on this group project! In the beginning we tried to take on maybe a little more then we could handle but with some patience, a lot of google document reading and some help from Pavan, Kit, Joshua and Simon i think we did an awesome job.</b>
                         </p>
                         <a href="https://github.com/arashiwalker" style="background: linear-gradient(60deg, #ab47bc, #247fc7);" class="btn btn-round">Follow</a>
                       </div>
@@ -128,7 +128,7 @@
                       <div class="card-body">
                         <h4 class="card-title" style=" margin-bottom: 10px;">Justin Goyena</h4>
                         <p><b>
-                          Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...</b>
+                          An Oakland native, with a 10 year backround in IT; Justin is an aspiring Full Stack Developer looking to change careers in 2020. As a member of TeamBusy, one of the many challenges the team faced was getting the APIs to run properly. It's safe to say we all became better developers coming out of this project.</b>
                         </p>
                         <a href="https://github.com/jstngo" style="background: linear-gradient(60deg, #ab47bc, #247fc7);" class="btn btn-round">Follow</a>
                       </div>
@@ -166,6 +166,113 @@
     </footer>
   </div>
 </div>
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<!-- Jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Google APIs -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBY4U1wnLT6sSZtTMPYZf0KweU5jRSl_FM&libraries=places&callback=initMap"
+async defer></script>
+<script>
+ var firebaseConfig = {
+    apiKey: "AIzaSyB3b6UavX4p0zug5iP5BnPas8kVcORjdfo",
+    authDomain: "busynotbusy-24279.firebaseapp.com",
+    databaseURL: "https://busynotbusy-24279.firebaseio.com",
+    projectId: "busynotbusy-24279",
+    storageBucket: "",
+    messagingSenderId: "810742588455",
+    appId: "1:810742588455:web:7c68e007157a72ad"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+var database = firebase.database();
+var busyHome = 0;
+var busyNearbyMe = 0;
+var busyMaps = 0;
+var busyTeamBusy = 0;
+var busySettings = 0;
+
+//firebase navbar functions bro
+  database.ref('busynotbusy/Home').on("value", function(snapshot) {
+      if (snapshot.val().counter){
+        busyHome = snapshot.val().counter;
+      }
+    });
+
+    $("#B1").on("click", function() {
+      busyHome++;
+      database.ref('busynotbusy/Home').set({
+        counter: busyHome
+      });
+    });
+
+      database.ref('busynotbusy/Nearbyme').on("value", function(snapshot) {
+      if (snapshot.val().counter){
+        busyNearbyMe = snapshot.val().counter;
+      }
+    });
+
+    $("#B2").on("click", function() {
+      busyNearbyMe++;
+      database.ref('busynotbusy/Nearbyme').set({
+        counter: busyNearbyMe
+      });
+    });
+
+      database.ref('busynotbusy/Maps').on("value", function(snapshot) {
+      if (snapshot.val().counter){
+        busyMaps = snapshot.val().counter;
+      }
+    });
+
+    $("#B3").on("click", function() {
+      busyMaps++;
+      database.ref('busynotbusy/Maps').set({
+        counter: busyMaps
+      });
+    });
+
+      database.ref('busynotbusy/TeamBusy').on("value", function(snapshot) {
+      if (snapshot.val().counter){
+        busyTeamBusy = snapshot.val().counter;
+      }
+    });
+
+    $("#B4").on("click", function() {
+      busyTeamBusy++;
+      database.ref('busynotbusy/TeamBusy').set({
+        counter: busyTeamBusy
+      });
+    });
+
+      database.ref('busynotbusy/TeamBusy').on("value", function(snapshot) {
+      if (snapshot.val().counter){
+        busySettings = snapshot.val().counter;
+      }
+    });
+
+    $("#B5").on("click", function() {
+      busySettings++;
+      database.ref('busynotbusy/Settings').set({
+        counter: busySettings
+      });
+    });
+</script>
+
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+<!--------------- dont mind code below this line :) ------------->
+
+
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
